@@ -3,7 +3,7 @@
  */
 
 import fs from "fs";
-import { game } from "../game.js";
+import { game, newGame } from "../game.js";
 
 beforeAll(() => {
   let fileContent = fs.readFileSync("index.html", "utf-8")
@@ -44,6 +44,6 @@ describe("newGame function work correctly", () => {
     expect(game.currentGame).toEqual([])
   })
   test("should clear playerMoves array", () => {
-    expect(game.score).toEqual([])
+    expect(game.playerMoves).toEqual([])
   })
 })
