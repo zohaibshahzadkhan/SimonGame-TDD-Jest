@@ -3,7 +3,7 @@
  */
 
 import fs from "fs";
-import { game, newGame, addTurn, lightsOn, showTurns } from "../game.js";
+import { game, newGame, addTurn, lightsOn, showTurns, playerTurn } from "../game.js";
 
 beforeAll(() => {
   let fileContent = fs.readFileSync("index.html", "utf-8")
@@ -84,4 +84,15 @@ describe("gameplay works correctly ", () => {
     showTurns()
     expect(game.turnNumber).toBe(0)
   })
+  test("should increment the score if the turn is correct", () => {
+    game.playerMoves.push(game.currentGame[0]);
+    playerTurn();
+    expect(game.score).toBe(1);
+});
+test("clicking during computer sequence should fail", () => {
+    showTurns();
+    game.lastButton = "";
+    document.getElementById("button2").click();
+    expect(game.lastButton).toEqual("");
+});
 })
