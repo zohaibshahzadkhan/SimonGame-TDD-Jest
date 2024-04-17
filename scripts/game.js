@@ -23,5 +23,6 @@ const addTurn = () => {
 
 export {
   game,
-  newGame
+  newGame,
+  addTurn
 }
