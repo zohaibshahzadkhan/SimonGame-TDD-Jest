@@ -29,3 +29,21 @@ describe("Game object contain correct keys", () => {
     expect(game.choices).toEqual(['button1', 'button2', 'button3', 'button4'])
   })
 })
+
+describe("newGame function work correctly", () => {
+  beforeAll(() => {
+    game.score = 42
+    game.currentGame = ["button1", "button2"]
+    game.playerMoves = ["button1", "button2"]
+    newGame()
+  })
+  test("should set game score to zero", () => {
+    expect(game.score).toEqual(0)
+  })
+  test("should clear currentGame array", () => {
+    expect(game.currentGame).toEqual([])
+  })
+  test("should clear playerMoves array", () => {
+    expect(game.score).toEqual([])
+  })
+})
