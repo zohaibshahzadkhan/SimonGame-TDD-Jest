@@ -3,7 +3,7 @@
  */
 
 import fs from "fs";
-import game from "../game.js";
+import { game } from "../game.js";
 
 beforeAll(() => {
   let fileContent = fs.readFileSync("index.html", "utf-8")
