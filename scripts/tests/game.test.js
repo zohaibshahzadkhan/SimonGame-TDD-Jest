@@ -5,6 +5,8 @@
 import fs from "fs";
 import { game, newGame, addTurn, lightsOn, showTurns, playerTurn } from "../game.js";
 
+jest.spyOn(window, "alert").mockImplementation(() => { })
+
 beforeAll(() => {
   let fileContent = fs.readFileSync("index.html", "utf-8")
   document.open()
@@ -88,11 +90,16 @@ describe("gameplay works correctly ", () => {
     game.playerMoves.push(game.currentGame[0]);
     playerTurn();
     expect(game.score).toBe(1);
-});
-test("clicking during computer sequence should fail", () => {
+  });
+  test("clicking during computer sequence should fail", () => {
     showTurns();
     game.lastButton = "";
     document.getElementById("button2").click();
     expect(game.lastButton).toEqual("");
-});
+  });
+  test('should call an alert when the move is wrong', () => { 
+    game.playerMoves.push("wrong")
+    playerTurn()
+    expect(window.alert).toBeCalledWith("Wrong move !")
+  })
 })

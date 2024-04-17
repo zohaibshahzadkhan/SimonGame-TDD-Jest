@@ -20,6 +20,7 @@ const newGame = () => {
         let move = e.target.getAttribute("id")
         lightsOn(move)
         game.playerMoves.push(move)
+        playerTurn()
       })
       circle.setAttribute("data-listener", "true")
     }
@@ -56,10 +57,22 @@ const showTurns = () => {
   }, 800);
 }
 
+const playerTurn = () => {
+  let i = game.playerMoves.length -1
+  if(game.currentGame[i] === game.playerMoves[i]){
+    if(game.currentGame.length === game.playerMoves.length){
+      game.score++
+      showScore()
+      addTurn()
+    }
+  }
+}
+
 export {
   game,
   newGame,
   addTurn,
   lightsOn,
-  showTurns
+  showTurns,
+  playerTurn
 }
