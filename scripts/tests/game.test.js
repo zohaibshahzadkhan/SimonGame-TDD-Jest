@@ -35,6 +35,7 @@ describe("newGame function work correctly", () => {
     game.score = 42
     game.currentGame = ["button1", "button2"]
     game.playerMoves = ["button1", "button2"]
+    document.getElementById("score").innerText = "42"
     newGame()
   })
   test("should set game score to zero", () => {
@@ -45,5 +46,8 @@ describe("newGame function work correctly", () => {
   })
   test("should clear playerMoves array", () => {
     expect(game.playerMoves).toEqual([])
+  })
+  test("should display zero for the element with id of score", () => {
+    expect(document.getElementById("score").innerText).toEqual(0)
   })
 })
