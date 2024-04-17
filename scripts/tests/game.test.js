@@ -50,6 +50,12 @@ describe("newGame function work correctly", () => {
   test("should display zero for the element with id of score", () => {
     expect(document.getElementById("score").innerText).toEqual(0)
   })
+  test("expect data-listener to be true", () => {
+    const elements = document.getElementsByClassName("circle")
+    for (let element of elements) {
+      expect(element.getAttribute("data-listener")).toBe(true)
+    }
+  })
 })
 
 describe("gameplay works correctly ", () => {
@@ -68,14 +74,14 @@ describe("gameplay works correctly ", () => {
     addTurn()
     expect(game.currentGame.length).toBe(2)
   })
-  test("should add correct class to light-up the button", () => { 
+  test("should add correct class to light-up the button", () => {
     let button = document.getElementById(game.currentGame[0])
     lightsOn(game.currentGame[0])
     expect(button.classList).toContain('light')
   })
-  test('showTurns should update game.TurnNumber', () => { 
+  test('showTurns should update game.TurnNumber', () => {
     game.turnNumber = 42
     showTurns()
     expect(game.turnNumber).toBe(0)
-   })
+  })
 })

@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector(".button").addEventListener("click", newGame);
+});
+
 const game = {
   score: 0,
   currentGame: [],
@@ -27,7 +31,7 @@ const lightsOn = (circleId) => {
   document.getElementById(circleId).classList.add("light")
   setTimeout(() => {
     document.getElementById(circleId).classList.remove("light")  
-  }, 4000);
+  }, 400);
 }
 
 const showTurns = () => {
@@ -35,7 +39,7 @@ const showTurns = () => {
   let turn = setInterval(() => {
     lightsOn(game.currentGame[game.turnNumber])
     game.turnNumber++
-    if(turnNumber >= game.currentGame.length){
+    if(game.turnNumber >= game.currentGame.length){
       clearInterval(turn)
     }
   }, 800);
