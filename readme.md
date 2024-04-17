@@ -4,6 +4,9 @@ Welcome to the Simon Game, a classic memory game where you test your memory skil
 
 
 ![Simon Game Preview](./assets/images/game.png)
+## Deployed Link
+
+The Simon Game is deployed and can be played online. Visit [Simon Game - TDD with Jest](https://zohaibshahzadkhan.github.io/SimonGame-TDD-Jest/) to play!
 
 ## About
 
