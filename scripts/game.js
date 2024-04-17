@@ -21,8 +21,17 @@ const addTurn = () => {
   game.currentGame.push(game.choices[Math.floor(Math.random() * 4)])
 }
 
+const lightsOn = (circleId) => {
+  document.getElementById(circleId).classList.add("light")
+  setTimeout(() => {
+    document.getElementById(circleId).classList.remove("light")  
+  }, 4000);
+}
+
+
 export {
   game,
   newGame,
-  addTurn
+  addTurn,
+  lightsOn
 }

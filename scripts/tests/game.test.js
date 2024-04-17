@@ -3,7 +3,7 @@
  */
 
 import fs from "fs";
-import { game, newGame, addTurn } from "../game.js";
+import { game, newGame, addTurn, lightsOn, showTurns } from "../game.js";
 
 beforeAll(() => {
   let fileContent = fs.readFileSync("index.html", "utf-8")
@@ -73,4 +73,9 @@ describe("gameplay works correctly ", () => {
     lightsOn(game.currentGame[0])
     expect(button.classList).toContain('light')
   })
+  test('showTurns should update game.TurnNumber', () => { 
+    game.turnNumber = 42
+    showTurns()
+    expect(game.turnNumber).toBe(0)
+   })
 })
