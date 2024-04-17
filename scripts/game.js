@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".button").addEventListener("click", newGame);
 });
 
@@ -13,6 +13,17 @@ const newGame = () => {
   game.score = 0
   game.currentGame = []
   game.playerMoves = []
+
+  for (let circle of document.getElementsByClassName("circle")) {
+    if (circle.getAttribute("data-listener") !== true) {
+      circle.addEventListener("click", (e) => {
+        let move = e.target.getAttribute("id")
+        lightsOn(move)
+        game.playerMoves.push(move)
+      })
+      circle.setAttribute("data-listener", "true")
+    }
+  }
   showScore()
   addTurn()
 }
@@ -30,7 +41,7 @@ const addTurn = () => {
 const lightsOn = (circleId) => {
   document.getElementById(circleId).classList.add("light")
   setTimeout(() => {
-    document.getElementById(circleId).classList.remove("light")  
+    document.getElementById(circleId).classList.remove("light")
   }, 400);
 }
 
@@ -39,7 +50,7 @@ const showTurns = () => {
   let turn = setInterval(() => {
     lightsOn(game.currentGame[game.turnNumber])
     game.turnNumber++
-    if(game.turnNumber >= game.currentGame.length){
+    if (game.turnNumber >= game.currentGame.length) {
       clearInterval(turn)
     }
   }, 800);
